@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - continue-on-error: false
-        run: echo "Hello world" > artifacts/test.txt
+        run: echo "Hello world" | tee artifacts/test.txt
       - continue-on-error: false
         uses: actions/upload-artifact@v1
         with:
@@ -30,7 +30,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: compile-output
-          path: dist
+          path: artifacts
       - continue-on-error: false
         name: Build Container
         run: docker-compose build
