@@ -1,6 +1,6 @@
 version: "3.5"
 
-service:
+services:
   node:
     build:
       context: .
