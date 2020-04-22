@@ -1,0 +1,19 @@
+name: Dev API publish
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Container Issue
+    runs-on: ubuntu-latest
+    env:
+      TAG: dev-${GITHUB_SHA}
+    steps:
+      - continue-on-error: false
+        name: pull
+        uses: actions/checkout@v2
+      - continue-on-error: false
+        name: Build Container
+        run: docker-compose -v
