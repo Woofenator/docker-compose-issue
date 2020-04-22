@@ -5,6 +5,18 @@ on:
       - master
 
 jobs:
+  prebuild:
+    name: Pre-build for artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - continue-on-error: false
+        run: echo "Hello world" > artifacts/test.txt
+      - continue-on-error: false
+        uses: actions/upload-artifact@v1
+        with:
+          name: compile-output
+          path: artifacts
+
   build:
     name: Container Issue
     runs-on: ubuntu-latest
@@ -14,6 +26,11 @@ jobs:
       - continue-on-error: false
         name: pull
         uses: actions/checkout@v2
+      - continue-on-error: false
+        uses: actions/download-artifact@v1
+        with:
+          name: compile-output
+          path: dist
       - continue-on-error: false
         name: Build Container
         run: docker-compose build
