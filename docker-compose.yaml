@@ -1,0 +1,7 @@
+version: "3.5"
+
+service:
+  node:
+    build:
+      context: .
+      dockerfile: node.dockerfile
