@@ -7,7 +7,7 @@ on:
       - 1.*
 
 env:
-  DEPLOYMENT_IMAGE: asdf:asdf
+  DEPLOYMENT_IMAGE: ${{ secrets.AWS_ECR_IMAGE }}:1.0.0
 
 jobs:
   prebuild:
