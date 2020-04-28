@@ -39,6 +39,9 @@ jobs:
         name: Print env
         run: set
       - continue-on-error: false
+        name: Print docker version
+        run: docker -v
+      - continue-on-error: false
         name: Build Container
         run: docker-compose -f docker-compose.wf.yaml build
       - name: Configure AWS Credentials
