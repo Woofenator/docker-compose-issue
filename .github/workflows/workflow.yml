@@ -39,4 +39,7 @@ jobs:
           path: artifact.txt
       - continue-on-error: false
         name: Build Container
+        run: echo ${DEPLOYMENT_IMAGE}
+      - continue-on-error: false
+        name: Build Container
         run: docker-compose -f docker-compose.wf.yaml build
