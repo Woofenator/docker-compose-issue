@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 1.*
+
+env:
+  DEPLOYMENT_IMAGE: secret:${{ github.sha }}
 
 jobs:
   prebuild:
