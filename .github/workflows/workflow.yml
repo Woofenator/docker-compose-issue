@@ -26,8 +26,6 @@ jobs:
     name: Container Issue
     runs-on: ubuntu-latest
     needs: prebuild
-    env:
-      TAG: dev-${GITHUB_SHA}
     steps:
       - continue-on-error: false
         name: pull
@@ -38,8 +36,8 @@ jobs:
           name: compile-output
           path: artifact.txt
       - continue-on-error: false
-        name: Build Container
-        run: echo ${DEPLOYMENT_IMAGE}
+        name: Print env
+        run: set
       - continue-on-error: false
         name: Build Container
         run: docker-compose -f docker-compose.wf.yaml build
