@@ -39,4 +39,4 @@ jobs:
           path: artifact.txt
       - continue-on-error: false
         name: Build Container
-        run: docker-compose build
+        run: docker-compose -f docker-compose.wf.yaml build
